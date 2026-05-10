@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch | The Vail Disco</title>
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --secondary-color: #00d4ff;
+            --discord-color: #5865F2;
+            --bg-color: #0f0f0f;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Merch Specific Hero */
+        .merch-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .merch-hero h1 {
+            font-size: 3.5rem;
+            text-shadow: 0 0 20px var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Message Box */
+        .message-container {
+            padding: 80px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .merch-notice {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .merch-notice h2 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .merch-notice p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .discord-btn {
+            background: var(--discord-color);
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .merch-hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .merch-notice { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">The Vail Disco</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#videos">Videos</a></li>
+            <li><a href="merch.html">Merch</a></li>
+            <li><a href="https://discord.gg/d5SP3AVmTy" target="_blank">Discord</a></li>
+        </ul>
+    </nav>
+
+    <header class="merch-hero">
+        <h1>MERCHANDISE</h1>
+        <p>Official Vail Disco Gear</p>
+    </header>
+
+    <main class="message-container">
+        <div class="merch-notice">
+            <h2>Coming Soon?</h2>
+            <p>
+                Sorry We Dont Have Merch But If you are intrested in buying some in the Future. 
+                Let us know in the Discord and we will consider making some Merch.
+            </p>
+            <a href="https://discord.gg/d5SP3AVmTy" target="_blank" class="btn discord-btn">TALK TO US ON DISCORD</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 The Vail Disco. All rights reserved.</p>
+        <p>Stay tuned for updates.</p>
+    </footer>
+
+</body>
+</html>
