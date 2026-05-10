@@ -1,1 +1,265 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vail Disco | Official Site</title>
+    <style>
+        :root {
+            --primary-color: #8a2be2;
+            --secondary-color: #00d4ff;
+            --bg-color: #0f0f0f;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1514525253361-bee8a4874093?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Video Section */
+        .content-section {
+            padding: 50px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 180px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .play-overlay {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.7;
+        }
+
+        .video-info {
+            padding: 15px;
+        }
+
+        .video-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Socials */
+        .social-bar {
+            background: #111;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">The Vail Disco</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#merch">Merch</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>THE VAIL DISCO</h1>
+        <p>Gaming • Commentary • Chaos</p>
+        <a href="https://youtube.com" class="btn">SUBSCRIBE NOW</a>
+    </header>
+
+    <section class="content-section" id="videos">
+        <h2 class="section-title">Latest Uploads</h2>
+        <div class="video-grid">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <span class="play-overlay">▶️</span>
+                    <img src="https://via.placeholder.com/400x225/222/fff?text=Latest+Video" alt="Thumbnail" style="width:100%">
+                </div>
+                <div class="video-info">
+                    <h3>Why the Disco Never Stops | Vlog #42</h3>
+                    <p>2 days ago • 15k views</p>
+                </div>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <span class="play-overlay">▶️</span>
+                    <img src="https://via.placeholder.com/400x225/222/fff?text=Gaming+Highlights" alt="Thumbnail" style="width:100%">
+                </div>
+                <div class="video-info">
+                    <h3>Insane 1v5 Clutch in [Game Name]</h3>
+                    <p>1 week ago • 50k views</p>
+                </div>
+            </div>
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <span class="play-overlay">▶️</span>
+                    <img src="https://via.placeholder.com/400x225/222/fff?text=Storytime" alt="Thumbnail" style="width:100%">
+                </div>
+                <div class="video-info">
+                    <h3>How I Started The Vail Disco</h3>
+                    <p>2 weeks ago • 100k views</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="social-bar">
+        <h3>Join the Community</h3>
+        <div class="social-icons">
+            <br>
+            <a href="#">🐦</a> <!-- Twitter Icon Placeholder -->
+            <a href="#">📸</a> <!-- Instagram Icon Placeholder -->
+            <a href="#">🎮</a> <!-- Discord Icon Placeholder -->
+            <a href="#">🎵</a> <!-- TikTok Icon Placeholder -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 The Vail Disco. All rights reserved.</p>
+        <p>Designed for the fans.</p>
+    </footer>
+
+</body>
+</html>
