@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,20 +135,32 @@
             transform: translateY(-5px);
         }
 
-        .thumbnail {
-            width: 100%;
-            height: 180px;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .thumbnail-container {
             position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .thumbnail-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .play-overlay {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 3rem;
-            opacity: 0.7;
+            opacity: 0.8;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .video-info {
@@ -158,7 +169,12 @@
 
         .video-info h3 {
             margin-bottom: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            color: var(--text-color);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* Socials */
@@ -203,45 +219,14 @@
     <header class="hero" id="home">
         <h1>THE VAIL DISCO</h1>
         <p>Gaming • Commentary • Chaos</p>
-        <a href="https://youtube.com" class="btn">SUBSCRIBE NOW</a>
+        <a href="https://www.youtube.com/channel/UCOa_tsIYL9bcHUXZbNbWjuA" target="_blank" class="btn">SUBSCRIBE NOW</a>
     </header>
 
     <section class="content-section" id="videos">
         <h2 class="section-title">Latest Uploads</h2>
-        <div class="video-grid">
-            <!-- Video 1 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <span class="play-overlay">▶️</span>
-                    <img src="https://via.placeholder.com/400x225/222/fff?text=Latest+Video" alt="Thumbnail" style="width:100%">
-                </div>
-                <div class="video-info">
-                    <h3>Why the Disco Never Stops | Vlog #42</h3>
-                    <p>2 days ago • 15k views</p>
-                </div>
-            </div>
-            <!-- Video 2 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <span class="play-overlay">▶️</span>
-                    <img src="https://via.placeholder.com/400x225/222/fff?text=Gaming+Highlights" alt="Thumbnail" style="width:100%">
-                </div>
-                <div class="video-info">
-                    <h3>Insane 1v5 Clutch in [Game Name]</h3>
-                    <p>1 week ago • 50k views</p>
-                </div>
-            </div>
-            <!-- Video 3 -->
-            <div class="video-card">
-                <div class="thumbnail">
-                    <span class="play-overlay">▶️</span>
-                    <img src="https://via.placeholder.com/400x225/222/fff?text=Storytime" alt="Thumbnail" style="width:100%">
-                </div>
-                <div class="video-info">
-                    <h3>How I Started The Vail Disco</h3>
-                    <p>2 weeks ago • 100k views</p>
-                </div>
-            </div>
+        <div class="video-grid" id="youtube-grid">
+            <!-- Videos will load here automatically via JavaScript -->
+            <p style="text-align: center; grid-column: 1/-1;">Loading awesome content...</p>
         </div>
     </section>
 
@@ -249,10 +234,10 @@
         <h3>Join the Community</h3>
         <div class="social-icons">
             <br>
-            <a href="#">🐦</a> <!-- Twitter Icon Placeholder -->
-            <a href="#">📸</a> <!-- Instagram Icon Placeholder -->
-            <a href="#">🎮</a> <!-- Discord Icon Placeholder -->
-            <a href="#">🎵</a> <!-- TikTok Icon Placeholder -->
+            <a href="#">🐦</a> 
+            <a href="#">📸</a> 
+            <a href="#">🎮</a> 
+            <a href="#">🎵</a> 
         </div>
     </div>
 
@@ -260,6 +245,55 @@
         <p>&copy; 2026 The Vail Disco. All rights reserved.</p>
         <p>Designed for the fans.</p>
     </footer>
+
+    <script>
+        const API_KEY = 'AIzaSyDsrdbg-t1hpH0YayTzH-7UjgLSw_cQxIk';
+        const CHANNEL_ID = 'UCOa_tsIYL9bcHUXZbNbWjuA';
+        const videoGrid = document.getElementById('youtube-grid');
+
+        async function fetchVailDiscoVideos() {
+            // This URL fetches the latest 6 videos from your channel ID
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6&type=video`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.items) {
+                    videoGrid.innerHTML = ''; // Clear the loading message
+
+                    data.items.forEach(item => {
+                        const videoId = item.id.videoId;
+                        const title = item.snippet.title;
+                        const thumb = item.snippet.thumbnails.high.url;
+
+                        videoGrid.innerHTML += `
+                            <div class="video-card">
+                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" style="text-decoration: none;">
+                                    <div class="thumbnail-container">
+                                        <span class="play-overlay">▶️</span>
+                                        <img src="${thumb}" alt="${title}">
+                                    </div>
+                                    <div class="video-info">
+                                        <h3>${title}</h3>
+                                        <p style="font-size: 0.8rem; color: var(--secondary-color);">Watch on YouTube →</p>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    });
+                } else {
+                    videoGrid.innerHTML = '<p>No videos found or API error.</p>';
+                }
+            } catch (error) {
+                console.error("Error loading YouTube videos:", error);
+                videoGrid.innerHTML = '<p>Failed to load videos. Check console for details.</p>';
+            }
+        }
+
+        // Run the function when the page opens
+        fetchVailDiscoVideos();
+    </script>
 
 </body>
 </html>
